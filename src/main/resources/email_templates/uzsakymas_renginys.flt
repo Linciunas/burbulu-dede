@@ -1,0 +1,51 @@
+<#ftl encoding='UTF-8'>
+<#setting locale="lt_LT">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "https://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <style type="text/css" nonce="uE00bhRe4VorDStfZuVI3w">
+            body, td, th {font-size:12px; font-family: Verdana,Geneva,sans-serif; }
+            a:link, a:active {color:#1155CC; text-decoration:none}
+            a:hover {text-decoration:underline; cursor: pointer}
+            a:visited{color:##6611CC}
+            img{border:0px}
+            th{border-top:1px solid #D3D3D3;}
+            td, th{border-bottom:1px solid #D3D3D3;border-right:1px solid #D3D3D3;}
+        </style>
+    </head>
+    <body>
+        <#assign aDateTime = .now>
+        <div style="overflow: hidden;">
+            <p>Vardas: ${order.name}</p>
+            <p>Email: <a href="mailto:${order.email}">${order.email}</a></p>
+            <p>Telefonas: <a href="tel:${order.phone}">${order.phone}</a></p>
+            <p>Data: ${aDateTime?string["yyyy.MM.dd, HH:mm"]}</p>
+            <table width="100%">
+                <tr>
+                    <td>Tipas</td>
+                    <td>${order.renginioTipas}</td>
+                </tr>
+                <tr>
+                    <td>Vieta</td>
+                    <td>${order.renginioVieta}</td>
+                </tr>
+                <tr>
+                    <td>Laikas</td>
+                    <td>${order.renginioLaikas}</td>
+                </tr>
+                <tr>
+                    <td>Zmoniu kiekis</td>
+                    <td>${order.renginioZmones}</td>
+                </tr>
+                <tr>
+                    <td>Pasirodymo trukmė</td>
+                    <td>${order.pasirodymoTrukme}</td>
+                </tr>
+		    </table>
+            <br />
+        </div>
+    </body>
+</html>

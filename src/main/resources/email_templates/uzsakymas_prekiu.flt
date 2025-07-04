@@ -1,0 +1,50 @@
+<#ftl encoding='UTF-8'>
+<#setting locale="lt_LT">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "https://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <style type="text/css" nonce="uE00bhRe4VorDStfZuVI3w">
+            body, td, th {font-size:12px; font-family: Verdana,Geneva,sans-serif; }
+            a:link, a:active {color:#1155CC; text-decoration:none}
+            a:hover {text-decoration:underline; cursor: pointer}
+            a:visited{color:##6611CC}
+            img{border:0px}
+            th{border-top:1px solid #D3D3D3;}
+            td, th{border-bottom:1px solid #D3D3D3;border-right:1px solid #D3D3D3;}
+        </style>
+    </head>
+    <body>
+        <#assign aDateTime = .now>
+        <div style="overflow: hidden;">
+            <p>Vardas: ${order.name}</p>
+            <p>Email: <a href="mailto:${order.email}">${order.email}</a></p>
+            <p>Telefonas: <a href="tel:${order.phone}">${order.phone}</a></p>
+            <p>Data: ${aDateTime?string["yyyy.MM.dd, HH:mm"]}</p>
+            <p>Gauti siuntinuką: ${order.mode}</p>
+            <p>Miestas ir adresas: ${order.address}</p>
+            <table width="100%">
+                <tr>
+                    <th>Prekė</th>
+                    <th>Kiekis</th>
+                    <th>kaina</th>
+                    <th>Viso</th>
+                </tr>
+                <#assign total_amount = 0>
+                <#list order.productItems as productItem>
+                <tr>
+                    <td>${productItem.itemTitle}</td>
+                    <td>${productItem.amount}</td>
+                    <td>${productItem.itemPrice}</td>
+                    <td>${productItem.amount * productItem.itemPrice}</td>
+                    <#assign total_amount = total_amount + (productItem.amount * productItem.itemPrice)>
+                </tr>
+                </#list>
+		</table>
+           <p>Užsakymo kaina: ${total_amount}</p>
+            <br />
+        </div>
+    </body>
+</html>
